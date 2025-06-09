@@ -5,7 +5,6 @@ This project sets up a complete monitoring stack using **Prometheus**, **Node Ex
 It enables collection and visualization of system metrics on your host machine.
 
 ## Project Structure
-
 prometheus-grafana-monitoring/
 ├── docker-compose.yml # Docker Compose file to launch services
 ├── prometheus/
