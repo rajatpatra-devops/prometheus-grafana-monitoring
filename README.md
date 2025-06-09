@@ -1,41 +1,57 @@
-# Prometheus & Grafana Monitoring Setup
+# Homelab Monitoring: Prometheus + Grafana
 
-## Overview
-This project sets up a complete monitoring stack using **Prometheus**, **Node Exporter**, and **Grafana** via Docker Compose.  
-It enables collection and visualization of system metrics on your host machine.
+## 🚀 Overview
+This project sets up a complete observability stack on **my personal Ubuntu homelab** using Docker Compose.  
+It includes:
 
-## Project Structure
+- **Prometheus** for scraping and storing system metrics  
+- **Node Exporter** to expose CPU, memory, disk, and network stats  
+- **Grafana** for real-time dashboards and insights  
+
+Everything is containerized for portability, reproducibility, and automation.
+
+---
+
+## 📁 Project Structure
+
 prometheus-grafana-monitoring/
-├── docker-compose.yml # Docker Compose file to launch services
+├── docker-compose.yml # Compose file to deploy all services
 ├── prometheus/
-│ └── prometheus.yml # Prometheus configuration file
-├── prometheus.yaml # Grafana datasource provisioning config
-└── grafana/ # Grafana data and provisioning files
-└── provisioning/
+│ └── prometheus.yml # Scrape config for Prometheus
+├── prometheus.yaml # Grafana provisioning for Prometheus data source
+└── grafana/
+└── provisioning/ # Grafana config for auto data source setup
 
 
-## Components
+---
 
-- **Prometheus**: Open-source metrics collection and storage  
-- **Node Exporter**: Exposes hardware and OS metrics from the Linux host  
-- **Grafana**: Dashboard and visualization tool
+## ⚙️ Getting Started
 
-## Prerequisites
+### Prerequisites
+- Docker & Docker Compose installed (see [Docker docs](https://docs.docker.com/get-docker/))
 
-- Docker and Docker Compose installed on your machine
-
-## How to Run
-
-1. Start the stack:
-
+### Launch the Stack
 ```bash
 docker-compose up -d
-Access the services in your browser:
-
+Access the Services
 Prometheus UI: http://localhost:9090
 
 Node Exporter metrics: http://localhost:9100/metrics
 
-Grafana UI: http://localhost:3000 (default login: admin/admin)
+Grafana UI: http://localhost:3000
 
-Grafana is preconfigured with Prometheus as the data source via provisioning.
+Default login: admin / admin
+
+Grafana is ready to use with Prometheus auto-configured via prometheus.yaml.
+
+🔭 Future Enhancements
+Integrate Alertmanager for automated alerts
+
+Develop custom Grafana dashboards for specific services
+
+Automate setup and backups using Ansible or CI/CD pipelines
+
+🛠️ Troubleshooting Tips
+Use docker logs <container> to check for issues
+
+Confirm Prometheus is scraping metrics via its UI
